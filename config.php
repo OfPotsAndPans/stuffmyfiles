@@ -5,9 +5,9 @@ This file is for connecting to the SQL Database, it attempts to connect to the d
 
 /* Database credentials are defined with our specific account username and password */
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'user1');
-define('DB_PASSWORD', 'helpme');
-define('DB_NAME', 'stuffmyfiles');
+define('DB_USERNAME', 'user'); //changed for security reasons
+define('DB_PASSWORD', '********'); //removed for security reasons
+define('DB_NAME', 'smf_DB'); //changed for security reasons
  
 /* Attempt to connect to MySQL database */
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
