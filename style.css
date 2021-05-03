@@ -1,0 +1,309 @@
+/*
+This file is referenced within every visable page of our site in order to give our site a uniform style/appearance on browser and on mobile. 
+inline CSS within the site's other pages take precidence over the tags and classes declared within this page additionally, certain classes written here may be currently unused but were written with hopes of being utilized later in development. 
+for example 'topnav' was supposed to be used for a popup side-navigation menu that would display a user's contacts list 
+*/
+
+/*Contact*/
+body {
+    /*    color of background */
+    background-color: rgb(31, 11, 28);
+    /*    color of font*/
+    color: rgb(253, 241, 251);
+    /*    font family */
+    font-family: "Courier New";
+    /*    text alignment */
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.search-container {
+    /*display: block;*/
+    position: fixed;
+    right: 2%;
+    margin-top: -45px;
+}
+
+.search-container form button {
+    /*display: block;*/
+}
+
+
+.topnav {
+    overflow: hidden;
+    background-color: #e9e9e9;
+}
+
+.topnav .search-container {
+    float: right;
+}
+
+.topnav input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+
+.topnav .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+    background: #ccc;
+}
+
+@media screen and (max-width: 600px) {
+    .topnav .search-container {
+        float: none;
+    }
+
+    .topnav a,
+    .topnav input[type=text],
+    .topnav .search-container button {
+        float: none;
+        display: inline-block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+    }
+
+    .topnav input[type=text] {
+        border: 1px solid #ccc;
+    }
+}
+
+.wrapper {
+    width: 100%;
+    /*    position doesn't move with page if page is scrolled*/
+    position: absolute;
+    /*    position from top of page*/
+    top: 50%;
+    /*    position from left side of page*/
+    left: 50%;
+    /*  needed to keep div in middle of screen  */
+    transform: translate(-50%, -50%);
+    background-color: rgb(25, 106, 186);
+    padding: 2em;
+}
+
+.bigwrapper {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    background-color: rgb(11, 21, 31);
+}
+
+.inBigWrapper {
+    text-align: left;
+    margin: 2em;
+}
+
+.gr {
+    color: #A0A0A0;
+    text-decoration: underline;
+    cursor: pointer;
+    position: static;
+
+}
+
+.image-upload > input {
+    display: none;
+    visibility: hidden;
+    width: 60px;
+    height: 60px;
+}
+
+.image-upload > submit {
+    cursor: pointer;
+    display: none;
+    visibility: hidden;
+    width: 60px;
+    height: 60px;
+}
+
+
+/* needed to keep div in middle of screen  */
+@media only screen and (min-width: 768px) {
+    .wrapper {
+        width: 25em;
+    }
+
+    .bigwrapper {
+        width: 37em;
+    }
+}
+
+/*End of Contact*/
+
+/*INDEX*/
+
+form {
+    border: 3px solid rgb(31 11 28);
+    /* display: inline-block;*/
+}
+
+input[type=text],
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid;
+    #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #c9228f;
+    padding: 12px 10px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+.reg-container {
+    padding: 16px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.reg-inbigwrapper {
+    box-sizing: border-box;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 18px;
+    margin-top: 10px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+
+    .cancelbtn {
+        width: 100%;
+    }
+}
+
+/*for table */
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td {
+    text-align: center;
+}
+
+table,
+tr,
+th,
+td {
+    border: 2px solid black;
+    border-width: thick;
+    /*if only I could write thick with two Cs instead  I WANT MY TABLES THICC*/
+    border-style: solid;
+}
+
+/*End of Index*/
+
+/*for search bar*/
+
+/* Add a black background color to the top navigation bar */
+.topnav {
+    overflow: hidden;
+    background-color: #e9e9e9;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: right;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Style the "active" element to highlight the current page */
+.topnav a.active {
+    background-color: #2196F3;
+    color: white;
+}
+
+/* Style the search box inside the navigation bar */
+.topnav input[type=text] {
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+}
+
+/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
+@media screen and (max-width: 600px) {
+
+    .topnav a,
+    .topnav input[type=text] {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+    }
+
+    .topnav input[type=text] {
+        border: 1px solid #ccc;
+    }
+}
