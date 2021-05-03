@@ -11,7 +11,9 @@ lastly, the file is moved from buffer and uploaded to the web server inside the 
 if something goes wrong an error message is reported to the user via an echo statement.
 either way the user is then redirected back to the welcome.php page
 
-
+all files are placed within the user's uninue folder within /var/www/stuffmyfiles.cf/testing/$username
+"testing" is the name of the directory that contains all the folders for every user 
+"$username" contains the name given to the user's folder which is subsequently also the username of the user
 
 
 KNOWN BUGS:

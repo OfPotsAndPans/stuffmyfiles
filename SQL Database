@@ -1,0 +1,184 @@
+//MySQL Database For Stuffmyfiles.cf
+//terminal command to access the SQL database: sudo mysql -u user1 -p stuffmyfiles
+
+//These are the tables we used
+mysql> show tables;
++------------------------+
+| Tables_in_stuffmyfiles |
++------------------------+
+| CONTACTS               |
+| FILE_INFO              |
+| FOLDER                 |
+| USER_INFO              |
++------------------------+
+4 rows in set (0.00 sec)
+
+mysql> describe FILE_INFO;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| FILE_ID    | int unsigned | NO   | PRI | NULL    | auto_increment |
+| FIUSER_ID  | int unsigned | YES  | MUL | NULL    |                |
+| FNAME      | varchar(30)  | YES  |     | NULL    |                |
+| FTYPE      | varchar(10)  | NO   |     | NULL    |                |
+| DATE_ADDED | date         | YES  |     | NULL    |                |
+| FILE_SIZE  | int unsigned | NO   |     | NULL    |                |
+| FISPUBLIC  | tinyint(1)   | YES  |     | NULL    |                |
+| PATHTOFILE | varchar(100) | YES  |     | NULL    |                |
+| CAPTION    | varchar(30)  | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+9 rows in set (0.00 sec)
+
+mysql> describe FILE_INFO;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| FILE_ID    | int unsigned | NO   | PRI | NULL    | auto_increment |
+| FIUSER_ID  | int unsigned | YES  | MUL | NULL    |                |
+| FNAME      | varchar(30)  | YES  |     | NULL    |                |
+| FTYPE      | varchar(10)  | NO   |     | NULL    |                |
+| DATE_ADDED | date         | YES  |     | NULL    |                |
+| FILE_SIZE  | int unsigned | NO   |     | NULL    |                |
+| FISPUBLIC  | tinyint(1)   | YES  |     | NULL    |                |
+| PATHTOFILE | varchar(100) | YES  |     | NULL    |                |
+| CAPTION    | varchar(30)  | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+9 rows in set (0.00 sec)
+
+mysql> describe FOLDER;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| FOLDER_ID    | int unsigned | NO   | PRI | NULL    | auto_increment |
+| FOLDERNAME   | varchar(10)  | NO   |     | NULL    |                |
+| FUSER_ID     | int unsigned | YES  | MUL | NULL    |                |
+| PATHTOFOLDER | varchar(100) | YES  |     | NULL    |                |
+| ISPUBLIC     | tinyint(1)   | YES  |     | NULL    |                |
+| ISDELETABLE  | tinyint(1)   | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> describe CONTACTS;
++----------------+--------------+------+-----+---------+-------+
+| Field          | Type         | Null | Key | Default | Extra |
++----------------+--------------+------+-----+---------+-------+
+| CONTACT_ID     | int unsigned | NO   | PRI | NULL    |       |
+| CUSER_ID       | int unsigned | NO   | PRI | NULL    |       |
+| CONTACTUSER_ID | int          | YES  |     | NULL    |       |
++----------------+--------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+//The table of all the user accounts we have made for the site. 
+//notice that username passwords have been altered for security purposes. this was suppose to be done dynamically through PHP's hash function but we ran out of time before we could set it up correctly so it was removed at the last minute
+mysql> select * from USER_INFO;
++---------+----------------+----------------------+--------------+-------------+
+| USER_ID | USERNAME       | PASSWORD             | PATHTOFOLDER | MAX_STORAGE |
++---------+----------------+----------------------+--------------+-------------+
+|     240 | hey            | ***                  | NULL         |         240 |
+|     241 | PhillTheFish   | ******               | NULL         |        1024 |
+|     242 | JaeisWay       | ********             | NULL         |        1024 |
+|     245 | PhillTheFish2  | *********            | NULL         |        1024 |
+|     246 | Kick_fish      | *******              | NULL         |        1024 |
+|     247 | helloworld     | ********             | NULL         |        1024 |
+|     248 | IDreamOfWill   | **************       | NULL         |        1024 |
+|     249 | IDreamOfKevin  | *********            | NULL         |        1024 |
+|     250 | rexysammmy     | ************         | NULL         |        1024 |
+|     251 | fingers        | *******              | NULL         |        1024 |
+|     252 | FrenchKissJae  | ************         | NULL         |        1024 |
+|     253 | putaBaaBaainme | *********            | NULL         |        1024 |
+|     254 | help           | ****                 | NULL         |        1024 |
+|     255 | cool           | ****                 | NULL         |        1024 |
+|     256 | cooler         | ****                 | NULL         |        1024 |
+|     257 | how            | ***                  | NULL         |        1024 |
+|     258 | helped         | **                   | NULL         |        1024 |
+|     259 | 3d             | **                   | NULL         |        1024 |
+|     260 | filemycrimes   | *****                | NULL         |        1024 |
+|     261 | qwerty         | ******************** | NULL         |        1024 |
+|     262 | WithLocks2Love | ************         | NULL         |        1024 |
+|     263 | nascar         | *********            | NULL         |        1024 |
+|     264 | will           | **********           | NULL         |        1024 |
+|     265 | FrenchKissJae2 | ***                  | NULL         |        1024 |
+|     266 | owwy           | ********             | NULL         |        1024 |
+|     267 | KevinGay       | ********             | NULL         |        1024 |
+|     268 | kevin1may      | ********             | NULL         |        1024 |
+|     269 | kevin2may      | ********             | NULL         |        1024 |
+|     270 | kevin3may      | ********             | NULL         |        1024 |
+|     271 | kevin4may      | ********             | NULL         |        1024 |
+|     272 | iloveyouwill   | ***************      | NULL         |        1024 |
+|     273 | racecar        | ****                 | NULL         |        1024 |
+|     274 | jae            | ************         | NULL         |        1024 |
+|     275 | william        | ********             | NULL         |        1024 |
+|     276 | Abdul          | ********             | NULL         |        1024 |
+|     277 | BingBong       | ****                 | NULL         |        1024 |
+|     278 | muffincont     | ******               | NULL         |        1024 |
++---------+----------------+----------------------+--------------+-------------+
+37 rows in set (0.00 sec)
+
+//all the files uploaded to the site so far
+mysql> select * from FILE_INFO;
++---------+-----------+----------------------------+-------+------------+-----------+-----------+------------+---------+
+| FILE_ID | FIUSER_ID | FNAME                      | FTYPE | DATE_ADDED | FILE_SIZE | FISPUBLIC | PATHTOFILE | CAPTION |
++---------+-----------+----------------------------+-------+------------+-----------+-----------+------------+---------+
+|       1 |       271 | apple.jpg                  | jpg   | 2021-04-28 |     48882 |      NULL | target_dir | NULL    |
+|       3 |       273 | filed.jpg                  | jpg   | 2021-04-28 |     40349 |      NULL | target_dir | NULL    |
+|       4 |       264 | Plus.png                   | png   | 2021-04-29 |     15634 |      NULL | target_dir | NULL    |
+|       5 |       273 | Ch5.pdf                    | pdf   | 2021-04-30 |    500132 |      NULL | target_dir | NULL    |
+|       6 |       264 | Arrow.png                  | png   | 2021-04-30 |    128989 |      NULL | target_dir | NULL    |
+|       8 |       264 | Masks1.jpg                 | jpg   | 2021-04-30 |    240395 |      NULL | target_dir | NULL    |
+|       9 |       264 | Arrow4.png                 | png   | 2021-04-30 |      1873 |      NULL | target_dir | NULL    |
+|      10 |       264 | Arrow4.png                 | png   | 2021-04-30 |      1873 |      NULL | target_dir | NULL    |
+|      11 |       273 | Wah1.jpg                   | jpg   | 2021-04-30 |    693446 |      NULL | target_dir | NULL    |
+|      12 |       264 | Arrow5.png                 | png   | 2021-04-30 |      4128 |      NULL | target_dir | NULL    |
+|      13 |       264 | Arrow6.png                 | png   | 2021-04-30 |      4128 |      NULL | target_dir | NULL    |
+|      14 |       271 | Tasbery.jpg                | jpg   | 2021-04-30 |    465209 |      NULL | target_dir | NULL    |
+|      15 |       274 | arrow.png                  | png   | 2021-04-30 |      3228 |      NULL | target_dir | NULL    |
+|      16 |       271 | really hopeing.PNG         | png   | 2021-04-30 |   1636161 |      NULL | target_dir | NULL    |
+|      18 |       271 | new pfp.PNG                | png   | 2021-04-30 |    580516 |      NULL | target_dir | NULL    |
+|      19 |       271 | oJyBDq9.png                | png   | 2021-04-30 |   2189396 |      NULL | target_dir | NULL    |
+|      20 |       264 | Arrow6.png                 | png   | 2021-04-30 |      4128 |      NULL | target_dir | NULL    |
+|      21 |       277 | Parachuting Assignment.pdf | pdf   | 2021-04-30 |   1573087 |      NULL | target_dir | NULL    |
+|      22 |       277 | image.jpg                  | jpg   | 2021-04-30 |    238387 |      NULL | target_dir | NULL    |
+|      23 |       277 | better.txt                 | txt   | 2021-04-30 |     75024 |      NULL | target_dir | NULL    |
+|      24 |       278 | 8a30241.jpg                | jpg   | 2021-05-03 |     86359 |      NULL | target_dir | NULL    |
++---------+-----------+----------------------------+-------+------------+-----------+-----------+------------+---------+
+21 rows in set (0.00 sec)
+
+//only row made was made for testing purposes
+mysql> select * from CONTACTS;
++------------+----------+----------------+
+| CONTACT_ID | CUSER_ID | CONTACTUSER_ID |
++------------+----------+----------------+
+|        240 |      240 |            240 |
++------------+----------+----------------+
+1 row in set (0.00 sec)
+
+//only row made was made for testing purposes
+mysql> select * from FOLDER;
++-----------+------------+----------+--------------+----------+-------------+
+| FOLDER_ID | FOLDERNAME | FUSER_ID | PATHTOFOLDER | ISPUBLIC | ISDELETABLE |
++-----------+------------+----------+--------------+----------+-------------+
+|       240 | hey        |      240 | NULL         |        1 |           1 |
++-----------+------------+----------+--------------+----------+-------------+
+1 row in set (0.00 sec)
+
+
+//Created role named developer_user to hold only the permissions we wanted users to be allowed to do
+mysql> select current_role();
++-----------------------+
+| current_role()        |
++-----------------------+
+| `developer_users`@`%` |
++-----------------------+
+1 row in set (0.00 sec)
+
+//From root granted the permissions to the role 'developer_users'
+mysql> root'@'% grant alter,create,delete,drop,index,insert,select,update,trigger,alter  routine,create routine, execute, create temporary tables  on stuffmyfiles.* to 'developer_users';
+
+//we granted only the required permissions to 'user1', which is the MySQL account the site uses when establishing a connection to the MySQL database
+
+mysql> show grants\G
+*************************** 1. row ***************************
+Grants for user1@%: GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, CREATE TEMPORARY TABLES, EXECUTE, CREATE ROUTINE, ALTER ROUTINE, TRIGGER ON `stuffmyfiles`.* TO `user1`@`%`
+*************************** 2. row ***************************
+Grants for user1@%: GRANT `developer_users`@`%` TO `user1`@`%`
+3 rows in set (0.00 sec)

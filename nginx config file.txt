@@ -1,0 +1,112 @@
+########################################################contents of Nginx Server configuration file ###################################################
+###please note, multiple files are included within this file
+
+
+#contents of the nginx.conf file
+#terminal command used:  sudo nano /etc/nginx/nginx.conf
+
+        include /etc/nginx/sites-enabled/*;
+
+#################### For monitoring traffic metrics/status of application requests####################
+
+       accounting on;
+       accounting_log logs/http-accounting.log;
+
+        server {
+                # set accounting_id string by variable
+               accounting_id  $http_host;  
+       
+               location {
+                       set accounting_id string by location
+                       accounting_id  "accounting_id_str";                     
+               }
+
+                location /nginx_status {
+
+                     #turn on stats 
+                     #like num of all open connections, stats about accepted connections,connections per sec,...
+                     stub_status on;
+                     access_log off;
+                     #allow all means anyone from any machine,I only allow from my machine:
+                     #allow all
+                     allow 192.168.254.33;
+                     deny all;
+                }
+       }
+}
+#mail {
+#       # See sample authentication script at:
+#       # http://wiki.nginx.org/ImapAuthenticateWithApachePhpScript
+# 
+#       # auth_http localhost/auth.php;
+#       # pop3_capabilities "TOP" "USER";
+#       # imap_capabilities "IMAP4rev1" "UIDPLUS";
+# 
+#       server {
+#               listen     localhost:110;
+#               protocol   pop3;
+#               proxy      on;
+#       }
+# 
+#       server {
+#               listen     localhost:143;
+
+
+# end of nginx.conf
+
+######################################################## Contents of Our Website Configuration File ###################################################
+
+
+#terminal command used: sudo nano /etc/nginx/sites-enabled/stuffmyfiles.cf
+
+
+server { #specify the listening port #same but for ipv6
+        server_name stuffmyfiles.cf www.stuffmyfiles.cf;
+        root /var/www/stuffmyfiles.cf; #path to website files
+        index index.html index.htm index.php;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf; 
+                fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+        }
+
+        location ~ /\.ht {
+                deny all;
+        }
+
+#### added TLS Certificate for HTTPS ####
+
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/stuffmyfiles.cf/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/stuffmyfiles.cf/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = www.stuffmyfiles.cf) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    if ($host = stuffmyfiles.cf) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+        listen 80;
+        listen [::]:80;
+        server_name stuffmyfiles.cf www.stuffmyfiles.cf;
+    return 404; # managed by Certbot
+
+}
+
+# end of stuffmyfiles.cf file
+

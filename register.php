@@ -1,6 +1,10 @@
 <?php 
-/*This file is for account creation it makes sure user enters all fields when submit button is pressed then compares what user has entered is unique within the SQL database to prevent duplicate accounts if not a user table is created for the user in SQL with the user's username and password then redirects the user to the login screen to sign in. a series of statements can be echoed if the user enters invalid statements to inform the user why an account wasn't made   
+/*
+This file is for account creation it makes sure user enters all fields when submit button is pressed then compares what user has entered is unique within the SQL database to prevent duplicate accounts if not a user table is created for the user in SQL with the user's username and password then redirects the user to the login screen to sign in. a series of statements can be echoed if the user enters invalid statements to inform the user why an account wasn't made   
 this page relies heavily on the config file to establish SQL connection and the functions php to check if a user is already signed in locally
+
+all users are created their very own folder within a user's directory located inside the Nginx site's directory: /var/www/stuffmyfiles.cf/testing/
+"testing" is the name of the directory that contains all the folders for every user 
 
 Known Bug:
     An account may be created and the user may be redirected to the login screen but attempts to login using index.php state invalid username or password. This has occured once and only once so the chances are rare but possible. further inspection shows that the username and password were sucessfully created within the SQL database with the exact parameters passed on account creation and user login yet the username or password is deemed invalid
