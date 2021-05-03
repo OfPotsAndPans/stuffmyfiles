@@ -82,6 +82,39 @@ if(!isset($_SESSION["USER_ID"]) || $_SESSION["USER_ID"] !== true){
             <th>Type</th>
             <th></th>
         </tr>
+        <?php
+                            
+                                $userID = $user_data["USER_ID"];
+                                $query = "Select * from FILE_INFO where FIUSER_ID = '$userID'";
+                                $result = mysqli_query($link, $query);
+                                $numRow = mysqli_num_rows($result);
+                                if($numRow > 0){
+                                        while ($row = mysqli_fetch_array($result)){
+                                                $download = '<a href="download.php?file=' . urlencode($row["FNAME"]) . '">Download</a>';
+                                                $delete = '<a href="delete.php?file=' . urlencode($row["FNAME"]) . '">Delete</a>';
+                                                echo "<tr><td>". $download . "</td><td>". $row["FNAME"] ."</td><td>" . $row["DATE_ADDED"] . "</td><td>" . $row["FILE_SIZE"] . "</td>"</td><td>" . $row["FTYPE"] . "</td><td>" . $delete .  "</td></tr>";
+                                        }
+                                
+                                        echo "</table>";
+                                }
+                                else {
+                                        echo "0 result";
+                                }
+
+     ?>
+
+    </table>
+    /*
+    <!-- what it looks like when 3 files have been uploaded
+    <table style="width: 50%; margin: 0px auto; bottom: 100px;">
+        <tr>
+            <th>Sort by:</th>
+            <th>Name</th>
+            <th>Date Added</th>
+            <th>Size</th>
+            <th>Type</th>
+            <th></th>
+        </tr>
         <tr>
             <td><a href="download.php?file=filed.jpg">Download</a></td>
             <td>filed.jpg</td>
@@ -107,7 +140,7 @@ if(!isset($_SESSION["USER_ID"]) || $_SESSION["USER_ID"] !== true){
             <td><a href="delete.php?file=Gao1.jpg">Delete</a></td>
         </tr>
     </table>
-    <!-- </table> -->
+     --> */
 
 
 

@@ -103,11 +103,11 @@ session_start();
 
 
                     <label>Confirm Password</label>
-                    <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_pa>
+                    <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
                     <span class="invalid-feedback"><?php echo $confirm_password_err; ?> </span>
-            
-            
-                <button type=" submit" value="Submit"> Submit </button>
+
+
+                    <button type=" submit" value="Submit"> Submit </button>
 
                 </div>
                 <p>Already have an account? <a href="index.php" class="gr">Login here</a>.</p>
